@@ -1,0 +1,5 @@
+Revision history for Mail-ContextIO
+
+0.01    Dec. 7, 2012 - Jan. 17, 2013
+        First version, ported from PHP-ContextIO as of Nov. 21, 2012
+        Added Perldoc commentary
