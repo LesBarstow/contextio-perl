@@ -12,11 +12,11 @@ Mail::ContextIO::Response - Internal methods for creating error responses
 
 =head1 VERSION
 
-Version 0.01
+Version 0.02
 
 =cut
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 
 =head1 SYNOPSIS
@@ -87,6 +87,12 @@ sub _parseHeaders {
         } else {
             $headers->{$name} = \@header_out;
         }
+    }
+    if ( $which eq 'response' ) {
+        $headers->{'Status-Line'} = $httpMessage->status_line();
+    } elsif ( $which eq 'request' ) {
+        my $uri = $httpMessage->uri->as_string();
+        $headers->{'Request-Line'} = $uri;
     }
     $self->{'headers'}->{$which} = $headers;
 }    
